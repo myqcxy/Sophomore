@@ -1,0 +1,40 @@
+package test;
+
+import java.awt.Component;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.AbstractButton;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JTextField;
+
+public class FirstJFrame extends JFrame {
+	private int count = 0;
+	private Component textField;
+	public FirstJFrame(){
+		setSize(200,300);
+		setLocation(200,300);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		final JTextField textFiled = new JTextField();
+		add(textField,"North");
+		JButton btn = new JButton("click me");
+		btn.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				count++;
+				((AbstractButton) textField).setText("µ¥»÷µÚ" + count + "´Î");
+			}
+			
+		});
+		add(btn);
+		setVisible(true);
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		new FirstJFrame();
+	}
+
+}

@@ -1,0 +1,63 @@
+package test;
+
+public class Pet {
+	private String varieties;
+	private String name;
+	private int age;
+	private char sex;
+	private String sound;
+	public Pet(String varieties,String names, int age, char sex,String sound) {
+		this.setVarieties(varieties);
+		this.setName(name);
+		this.setAge(age);
+		this.setSex(sex);
+		this.setSound(sound);
+	}
+	
+	
+	public String getVarieties() {
+		return varieties;
+	}
+
+	public void setVarieties(String varieties) {
+		this.varieties = varieties;
+	}
+
+
+	public String getSound() {
+		return sound;
+	}
+
+	public void setSound(String sound) {
+		this.sound = sound;
+	}
+	
+	public void show(){
+		System.out.println("宠物信息为：");
+		System.out.println("姓名：" + this.getName() + "性别：" + this.getSex() + "年龄：" + this.getAge());
+	}
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age > 0 ? age:1;
+	}
+
+	public char getSex() {
+		return sex;
+	}
+
+	public void setSex(char sex) {
+		this.sex = sex;
+	}
+
+}

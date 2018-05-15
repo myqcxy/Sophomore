@@ -1,0 +1,19 @@
+package test;
+import test.Pet;
+public class Dog extends Pet{
+	static final String sound = "Íô-ÍôÍô-ÍôÍôÍô";
+	public Dog() {
+	}
+
+	public Dog(String varieties, String names, int age, char sex) {
+		super(varieties, names, age, sex);
+		// TODO Auto-generated constructor stub
+	}
+
+	public void show(){
+		System.out.println("³èÎï¹·ĞÅÏ¢Îª£º");
+		super.show();
+		System.out.println(" ½ĞÉù£º" + sound);
+	}
+
+}

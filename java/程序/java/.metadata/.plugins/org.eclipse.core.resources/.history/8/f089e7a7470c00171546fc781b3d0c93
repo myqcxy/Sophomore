@@ -1,0 +1,12 @@
+package test;
+
+public class test {
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Dog dog = new Dog("藏獒","张三",2,'公');
+		dog.show();
+		Cat cat = new Cat("山猫","tom",2,'母');
+		cat.show();
+	}
+}

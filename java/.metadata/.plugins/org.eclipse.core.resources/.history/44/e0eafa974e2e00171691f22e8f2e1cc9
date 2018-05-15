@@ -1,0 +1,16 @@
+package Login;
+
+import javax.swing.JFrame;
+
+public class Student  extends JFrame{
+	public Student(String id){
+		setVisible(true);
+		setLocation(500,300);
+		pack();
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
+	public static void main(String[] args) {
+		
+	}
+
+}

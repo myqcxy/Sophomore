@@ -1,0 +1,33 @@
+package shiyan;
+
+
+import java.io.*;
+
+public class BufferedInputStreamDemo {
+
+	public static void main(String[] args) throws IOException {
+		// TODO Auto-generated method stub
+		BufferedInputStreamDemo demo= new BufferedInputStreamDemo();
+		demo.readFile("src\\ReaderAndWriter\\BufferedInputStreamDemo.java");
+	}
+	public void readFile(String fileName) throws IOException{
+		InputStream in = null;
+		try {
+			in = new BufferedInputStream(new FileInputStream(fileName), 8 * 1024);
+			byte[] b = new byte[1024];
+			int num = 0;
+			while ((num = in.read(b)) != -1) {
+				System.out.println(new String(b, 0, num));
+			} 
+		}catch(IOException e){
+			System.out.println("sdf");
+		} 
+		finally {
+			// TODO: handle finally clause
+			if(in != null){
+				in.close();
+			}
+		}
+	}
+
+}

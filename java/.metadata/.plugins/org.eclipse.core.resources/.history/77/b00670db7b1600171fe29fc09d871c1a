@@ -1,0 +1,17 @@
+package test;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
+public class FileInputDemo {
+
+	public static void main(String[] args) throws IOException {
+		// TODO Auto-generated method stub
+		
+			FileInputStream in = new FileInputStream("C:\\Users\\MYQ\\Desktop\\java×÷Òµ1\\test.txt");
+	//	in.read();
+		System.out.println((char)in.read());
+	}
+
+}

@@ -1,0 +1,78 @@
+package Login;
+
+import java.sql.*;
+
+import javax.swing.JOptionPane;
+
+public class LoginCheck {
+	String driver = "org.hsqldb.jdbcDriver";
+	String url = "jdbc:hsqldb:hsql://localhost";
+	String user = "sa";
+	String pass = "";
+	private Connection con;
+	public LoginCheck() throws ClassNotFoundException, SQLException{
+		init();
+	}
+	public void init() throws ClassNotFoundException, SQLException{
+		if(con!=null)
+			return;
+		Class.forName(driver);
+		con = DriverManager.getConnection(url,user,pass);
+	}
+	public boolean CheckStudent(String id,String pass) throws SQLException{
+		String sql = "select * from student where id=\'" + id + "\'";
+		 Statement stat = con.createStatement();
+		 ResultSet rs = stat.executeQuery(sql);
+		 /*sql = "insert into student values('"+123+"','"+"张三"+"',123,0,3,'"+0+"','"+0+"','"+0+"')";
+		 stat.executeUpdate(sql);*/
+		if(rs.next()){
+			String passwd = rs.getString("pass");
+			close();
+			return passwd.equals(pass);
+		}
+		else{
+			JOptionPane.showMessageDialog(null, "用户不存在", "错误信息",JOptionPane.WARNING_MESSAGE);
+			close();
+				return false;
+		}
+		
+	}
+	public void close() throws SQLException{
+		if(con!=null)
+			con.close();
+	}
+	public void initStudentTabel() throws ClassNotFoundException, SQLException{
+		
+		String sql = "create table student(id varchar(120),name varchar(120),";
+		sql += "pass varchar(120),borrowed int,rest int,";
+		sql += "book1 varchar(200),book2 varchar(200),book3 varchar(120) )";
+		Statement stat = con.createStatement();
+		stat.executeUpdate(sql);
+		stat.close();
+	
+	}
+	/*public void initBookTabel() throws SQLException{
+		String sql = "creat tabel book(id varchar(120),name varchar(120),";
+		sql += "borrow int,borrowed int,press varchar(200),";
+		sql += "author varchar(200),type varchar(200),time varchar(120),";
+		sql += "price decimal";
+		Statement stat = null;
+		try {
+			stat = con.createStatement();
+			stat.executeUpdate(sql);
+		} catch (SQLException e) {
+			
+		}
+		if(stat!=null){
+			stat.close();
+		}
+	
+	}*/
+	public static void main(String[] args) throws SQLException, ClassNotFoundException {
+		LoginCheck lc = new LoginCheck();
+		lc.init();
+	//	lc.initStudentTabel();
+		boolean s = lc.CheckStudent("123", "123");
+		lc.close();
+	}
+}

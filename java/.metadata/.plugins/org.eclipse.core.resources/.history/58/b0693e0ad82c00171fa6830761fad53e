@@ -1,0 +1,11 @@
+package shiyan6;
+
+import javax.swing.JFrame;
+
+public class NotePad extends JFrame {
+
+	public static void main(String[] args) {
+		
+	}
+
+}

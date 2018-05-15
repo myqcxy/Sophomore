@@ -1,0 +1,25 @@
+package test;
+import test.Pet;
+public class Dog extends Pet{
+	
+	private String sound;
+	
+	
+	public TestPet(String names, int age, char sex, String sound) {
+		super(names, age, sex);
+		this.setSound(sound);
+	}
+	
+	public String getSound() {
+		return sound;
+	}
+
+	public void setSound(String sound) {
+		this.sound = sound;
+	}
+	public void show(){
+		super.show();
+		System.out.println("½ÐÉù£º" + this.getSound());
+	}
+
+}

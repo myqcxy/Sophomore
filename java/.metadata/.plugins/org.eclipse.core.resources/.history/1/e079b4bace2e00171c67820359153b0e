@@ -1,0 +1,49 @@
+package Login;
+
+import java.awt.BorderLayout;
+import java.awt.Container;
+import java.awt.GridLayout;
+
+import javax.swing.*;
+
+public class Search extends JFrame {
+	private JRadioButton nameSearch;
+	private JRadioButton pressSearch;
+	private JRadioButton idSearch;
+	private JButton all;
+	public Search(){
+		nameSearch = new JRadioButton("按书名查找");
+		pressSearch = new JRadioButton("按出版社查找");
+		idSearch = new JRadioButton("按图书编号查找");
+		all = new JButton("显示所有图书");
+		ButtonGroup bg = new ButtonGroup();
+		nameSearch.setSelected(true);
+		bg.add(nameSearch);
+		bg.add(pressSearch);
+		bg.add(idSearch);
+		Container c = getContentPane();
+		JPanel jp1 = new JPanel(new GridLayout(2,3,5,5));
+		jp1.add(nameSearch);
+		jp1.add(pressSearch);
+		jp1.add(idSearch);
+		JLabel search = new JLabel("输入检索信息",SwingConstants.RIGHT);
+		JTextField searchBy = new JTextField(15);
+		JButton ok = new JButton("搜索");
+		jp1.add(search);
+		jp1.add(searchBy);
+		jp1.add(ok);
+		c.add(jp1,BorderLayout.NORTH);
+		JLabel jp2 = new JLabel();
+		JTextArea
+		setTitle("学生图书馆");
+		setVisible(true);
+		setLocation(500,300);
+		pack();
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
+	
+	public static void main(String[] args) {
+		
+	}
+
+}

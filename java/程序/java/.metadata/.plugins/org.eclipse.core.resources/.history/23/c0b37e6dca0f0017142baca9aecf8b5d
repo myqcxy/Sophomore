@@ -1,0 +1,11 @@
+package work;
+
+public abstract class abstractTest {
+	abstract void run();
+	public void test(){
+		long startTime = System.nanoTime();
+		run();
+		long endTime = System.nanoTime();
+		System.out.println("运行时间为：" + (endTime - startTime) + "ns");
+	}
+}

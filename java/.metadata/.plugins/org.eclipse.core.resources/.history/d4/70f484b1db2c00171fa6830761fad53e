@@ -1,0 +1,51 @@
+package shiyan6;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JFileChooser;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JScrollPane;
+import javax.swing.SwingConstants;
+
+import Event.PicBrowser.FileOpenListener;
+
+public class NotePad extends JFrame {
+	private JFileChooser chooser;
+	public NotePad(){
+		JMenuBar menuBar = new JMenuBar();
+		setJMenuBar(menuBar);
+		JMenu menu = new JMenu("文件");
+		menuBar.add(menu);
+		JMenuItem openItem = new JMenuItem("打开");
+		menu.add(openItem);
+		JMenuItem saveItem = new JMenuItem("保存");
+		menu.add(saveItem);
+	//	openItem.addActionListener(new FileOpenListener());
+		JMenuItem exitItem = new JMenuItem("离开");
+		menu.add(exitItem);
+		exitItem.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				System.exit(0);
+			}
+			
+		});
+		chooser = new JFileChooser();
+		chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+		setSize(600,600);
+		setLocation(200,200);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setVisible(true);
+	}
+	public static void main(String[] args) {
+		new NotePad();
+	}
+
+}

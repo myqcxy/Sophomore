@@ -1,0 +1,30 @@
+package work;
+
+public class School {
+	private String name;
+	private Address address;
+	
+	
+	public School(String name, Address address) {
+		super();
+		this.name = name;
+		this.address = address;
+	}
+	
+	static class Address{
+		private String city;
+		private String treet;
+		public Address(String city, String treet) {
+			super();
+			this.city = city;
+			this.treet = treet;
+		}
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Address address = new Address("zz","lhj");
+		School school  = new School("河南工业大学", address);
+	}
+
+}

@@ -1,0 +1,13 @@
+package test;
+
+import java.io.File;
+
+public class FileTest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		File aFile = new File("c:/windows/system32");
+		System.out.println(aFile.canRead());
+	}
+
+}

@@ -1,0 +1,11 @@
+package work;
+
+public class testInter implements interTest {
+
+	@Override
+	public void display() {
+		// TODO Auto-generated method stub
+
+	}
+
+}

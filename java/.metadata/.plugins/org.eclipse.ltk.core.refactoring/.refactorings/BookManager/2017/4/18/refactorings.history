@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename compilation unit &apos;Login.ReGister.java&apos; to &apos;Register.java&apos;&#x0D;&#x0A;- Original project: &apos;BookManager&apos;&#x0D;&#x0A;- Original element: &apos;Login.ReGister.java&apos;&#x0D;&#x0A;- Renamed element: &apos;Login.Register.java&apos;" description="Rename compilation unit &apos;ReGister.java&apos;" flags="2" id="org.eclipse.jdt.ui.rename.compilationunit" input="/src&lt;Login{ReGister.java" name="Register.java" references="false" stamp="1493553717922" version="1.0"/>
+</session>

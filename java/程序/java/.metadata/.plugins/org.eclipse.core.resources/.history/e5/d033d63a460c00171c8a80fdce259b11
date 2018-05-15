@@ -1,0 +1,20 @@
+package test;
+
+public class Cat extends Pet{
+	static final String sound = "ß÷-ß÷-ß÷";
+	public Cat() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Cat(String varieties, String names, int age, char sex) {
+		super(varieties, names, age, sex);
+		// TODO Auto-generated constructor stub
+	}
+	public void show(){
+		System.out.println("³èÎïÃ¨ĞÅÏ¢Îª£º");
+		super.show();
+		System.out.println(" ½ĞÉù£º" + sound);
+	}
+	
+}

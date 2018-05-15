@@ -1,0 +1,57 @@
+package work;
+import java.util.Scanner;
+	
+
+public class test {
+	public void sort(int []a,int start,int end){
+		if(start < end)
+		{
+			int t = partion(a,start,end);
+			sort(a,start,t-1);
+			sort(a,t+1,end);
+		}
+	}
+	public int partion(int []a, int start,int end){
+		int i = start;
+		int j = end + 1;
+		int temp = a[i];
+		while(true){
+			while(a[++i] < temp&&i < end);
+			while(a[--j] > temp);
+			if(i >= j) break;
+			int s = a[i];
+			a[i] = a[j];
+			a[j] = s;
+			a[i] = a[j];
+			a[j] = temp;
+			return j;
+			
+		}
+		
+		
+		return j;
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner in = new Scanner(System.in);
+		test t = new test();
+		int n = in.nextInt();
+		int [] a = new int[n];
+		for (int i = 0;i<n;i++)
+		{
+			a[i] = in.nextInt();
+		}
+/*		int m = in.nextInt();
+		while(m-- > 0){
+			t.sort(a,0,n-1);
+			int k = in.nextInt();
+			System.out.println(a[n-k]);
+		}*/
+		t.sort(a,0,n-1);
+		for (int i:a){
+			System.out.print(i + " ");
+		}
+	}
+
+}

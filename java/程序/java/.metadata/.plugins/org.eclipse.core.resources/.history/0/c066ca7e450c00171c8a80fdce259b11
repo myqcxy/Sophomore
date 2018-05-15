@@ -1,0 +1,19 @@
+package test;
+import test.Pet;
+public class Dog extends Pet{
+
+	public Dog() {
+	}
+
+	public Dog(String varieties, String names, int age, char sex, String sound) {
+		super(varieties, names, age, sex, sound);
+		// TODO Auto-generated constructor stub
+	}
+
+	public void show(){
+		System.out.println("宠物狗信息为：");
+		super.show();
+		System.out.println(" 叫声：" + this.getSound());
+	}
+
+}

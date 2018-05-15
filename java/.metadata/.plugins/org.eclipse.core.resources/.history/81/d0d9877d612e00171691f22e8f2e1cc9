@@ -1,0 +1,152 @@
+package Login;
+
+import java.awt.Container;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+
+
+public class Login extends JFrame implements ItemListener {
+	private JLabel[] info;
+	private JTextField[] infoText;
+	private JButton jbok;
+	private JButton jbReset;
+	private JPanel jp1;
+	private JPanel jp2;
+	private JPanel jp3;
+	private JPanel jp4;
+	private JRadioButton jrbTeacher;
+	private JRadioButton jrbStudent;
+	private Font g;
+	JLabel welcome;
+	private LoginCheck lc;
+	boolean flag = true;
+	public Login() throws ClassNotFoundException, SQLException{
+		lc = new LoginCheck();
+		g = new Font("宋体", Font.BOLD, 30);
+		info = new JLabel[2];
+		info[0] = new JLabel("账号", SwingConstants.RIGHT);
+		info[1] = new JLabel("密码", SwingConstants.RIGHT);
+		infoText = new JTextField[2];
+		jp1 = new JPanel();
+		jp2 = new JPanel();
+		jp2.setLayout(new GridLayout(2, 1, 5, 5));
+		for (int i = 0; i < 2; i++) {
+			infoText[i] = new JTextField(15);
+			infoText[i].setFont(g);
+			info[i].setFont(g);
+			jp1.add(info[i]);
+			jp2.add(infoText[i]);
+		}
+		welcome = new JLabel("登录我的图书馆");
+		welcome.setFont(g);
+		jp3 = new JPanel();
+		jp3.add(jp1);
+		jp3.add(jp2);
+		
+		Font g1 = new Font("宋体", Font.BOLD, 20);
+		jrbTeacher = new JRadioButton("教师");
+		jrbStudent = new JRadioButton("学生", true);
+		jbok = new JButton("登录");
+		JButton Regist = new JButton("注册");
+		jbok.addActionListener(new lis());
+		jbReset = new JButton("注册");
+		jbReset.addActionListener(new lis());
+		jrbTeacher.setFont(g1);
+		jrbTeacher.addItemListener(this);
+		jrbStudent.setFont(g1);
+		jrbStudent.addItemListener(this);
+		jbok.setFont(g);
+		jbReset.setFont(g);
+		ButtonGroup bg = new ButtonGroup();
+		bg.add(jrbTeacher);
+		bg.add(jrbStudent);
+		jp4 = new JPanel();
+		jp4.setLayout(new GridLayout(2, 2, 5, 5));
+		jbok.setSize(20, 20);
+		jp4.add(jbok);
+		jp4.add(jbReset);
+		jp4.add(jrbTeacher);
+		jp4.add(jrbStudent);
+		Container c = getContentPane();
+		c.setLayout(new GridLayout(3, 1));
+		c.add(welcome);
+		c.add(jp3);
+		c.add(jp4);
+		setTitle("图书信息管理系统");
+		setVisible(true);
+		pack();
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setLocation(500, 300);
+	}
+	class lis implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			Object source = e.getSource();
+			
+			
+			if(jrbStudent.isSelected()){
+				if(source == jbok){
+					for (int i = 0; i < 2; i++) {
+						if (infoText[i].getText().length() == 0) {
+							JOptionPane.showMessageDialog(getParent(), 
+									"请输入" + info[i].getText() + "信息！", "错误信息",
+									JOptionPane.WARNING_MESSAGE);
+							infoText[i].requestFocus();
+							flag = false;
+							return;
+						}
+					}
+					try {
+						if(lc.CheckStudent(infoText[0].getText(), infoText[1].getText())){
+							new Student(infoText[0].getText());
+							setVisible(false);
+						}
+						else{
+							JOptionPane.showMessageDialog(getParent(), 
+									"密码错误！", "错误信息",
+									JOptionPane.WARNING_MESSAGE);
+							infoText[1].setText("");
+							infoText[1].requestFocus();
+						}
+					} catch (SQLException e1) {
+						
+					} 
+				}
+			}
+		}
+		
+	}
+	public static void main(String[] args) throws ClassNotFoundException, SQLException {
+		new Login();
+	}
+	@Override
+	public void itemStateChanged(ItemEvent e) {
+		if(jrbTeacher.isSelected()){
+			welcome.setText("管理图书馆");
+		}
+		else{
+			welcome.setText("登录我的图书馆");
+		}
+	}
+
+}

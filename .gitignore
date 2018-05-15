@@ -1,0 +1,8 @@
+*.exe
+/java/.metadata/.plugins/org.eclipse.core.resources/.history/55
+/java/.metadata/.plugins/org.eclipse.core.resources/.history/ae/e07a851d5e2e00171691f22e8f2e1cc9
+ac
+/java/.metadata/.plugins/org.eclipse.core.runtime/.settings/*.prefs
+/java/.metadata/.plugins/org.eclipse.debug.core/.launches/*.launch
+/java/.metadata/.plugins/org.eclipse.epp.logging.aeri.ide/org.eclipse.epp.logging.aeri.ide.server/local-history/*.frq
+/java/.metadata/.plugins/org.eclipse.epp.logging.aeri.ide/org.eclipse.epp.logging.aeri.ide.server/*.json

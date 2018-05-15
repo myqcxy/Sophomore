@@ -1,0 +1,51 @@
+package Login;
+
+import java.awt.BorderLayout;
+import java.awt.Container;
+import java.awt.GridLayout;
+
+import javax.swing.*;
+
+public class Student  extends JFrame{
+	
+	private JLabel info[];
+	private JTextField infoText[];
+	private JButton function[];
+	public Student(String id){
+		info = new JLabel[5];
+		info[0] = new JLabel("账号",SwingConstants.RIGHT);
+		info[1] = new JLabel("姓名",SwingConstants.RIGHT);
+		info[2] = new JLabel("最大可借阅册数",SwingConstants.RIGHT);
+		info[3] = new JLabel("已借本数",SwingConstants.RIGHT);
+		info[4] = new JLabel("已借图书",SwingConstants.RIGHT);
+		infoText = new JTextField[5];
+		JPanel jp1 = new JPanel();
+		jp1.setLayout(new GridLayout(5, 2, 5, 5));
+		for(int i = 0;i<5;i++){
+			infoText[i] = new JTextField(15);
+			infoText[i].setEditable(false);
+			jp1.add(info[i]);
+			jp1.add(infoText[i]);
+		}
+		function = new JButton[3];
+		function[0] = new JButton("书目检索");
+		function[1] = new JButton("修改信息");
+		function[2] = new JButton("归还图书");
+		JPanel jp2 = new JPanel(new GridLayout(1,3,5,5));
+		for(int i = 0;i<3;i++){
+			jp2.add(function[i]);
+		}
+		Container c = getContentPane();
+		c.add(jp1,BorderLayout.CENTER);
+		c.add(jp2,BorderLayout.SOUTH);
+		setTitle("学生图书馆");
+		setVisible(true);
+		setLocation(500,300);
+		pack();
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
+	public static void main(String[] args) {
+		new Student("123");
+	}
+
+}

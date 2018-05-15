@@ -1,0 +1,74 @@
+package Login;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class BookSql {
+	String driver = "org.hsqldb.jdbcDriver";
+	String url = "jdbc:hsqldb:hsql://localhost";
+	String user = "sa";
+	String pass = "";
+	private Connection con;
+	public BookSql() throws ClassNotFoundException, SQLException{
+		init();
+	}
+	public void init() throws ClassNotFoundException, SQLException{
+		if(con!=null)
+			return;
+		Class.forName(driver);
+		con = DriverManager.getConnection(url,user,pass);
+	}
+	public void query(){
+		try {
+			Statement stat = con.createStatement();
+			String sql = "select * from book";
+			ResultSet rs = stat.executeQuery(sql);
+			while(rs.next()){
+				String name = rs.getString("name");
+				System.out.println(name);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		
+	}
+	public static void main(String[] args) throws ClassNotFoundException, SQLException {
+		BookSql bs = new BookSql();
+	//	bs.initTable();
+		bs.query();
+	}
+	private  void initTable() throws SQLException {
+		String sql = "create table book(id varchar(120),name varchar(120),";
+		sql += "borrow int,borrowed int,press varchar(200),";
+		sql += "author varchar(200),type varchar(200),time varchar(120),";
+		sql += "price decimal)";
+		Statement stat = null;
+		try {
+			stat = con.createStatement();
+			stat.executeUpdate(sql);
+			sql = "insert into book values(?,?,?,?,?,?,?,?,?)";
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, "00001");
+			ps.setString(2, "Java程序设计及实验");
+			ps.setInt(3, 10);
+			ps.setInt(4, 0);
+			ps.setString(5, "清华大学出版社");
+			ps.setString(6, "刘继承 王社伟 宋敏");
+			ps.setString(7, "计算机 程序设计");
+			ps.setString(8, "2012年9月");
+			ps.setDouble(9, 34.50);
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			
+		}
+		if(stat!=null){
+			stat.close();
+		}
+	}
+
+}

@@ -1,0 +1,33 @@
+package shiyan3;
+
+import java.io.File;
+
+public class FileTest {
+	void printFile(File f,int j){
+		for(int i =0;i<j;i++){
+			System.out.print("\t");
+		}
+		if(f.isDirectory()){
+			System.out.println("目录" + f + "中的文件和目录为：");		
+			
+			try {
+				for(File i : f.listFiles()){				
+					printFile(i,j+1);
+				}
+			} catch (Exception e) {
+
+			}
+			
+		}
+		else{
+
+			System.out.println(f + " "+ f.length() + "b");
+		}
+	}
+	public static void main(String[] args) {
+		FileTest a = new FileTest();
+		File f = new File("E:\\G");
+		a.printFile(f,0);
+	}
+
+}
